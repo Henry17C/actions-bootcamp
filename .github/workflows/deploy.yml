@@ -8,6 +8,9 @@ jobs:
   # This is my first job
   first_job:
     runs-on: ubuntu-latest
+    # Define the output variable for the job
+    outputs:
+      salida: ${{ steps.step1.outputs.my_variable }} # Define an output variable for the job
     env:
       NAME: 'value'
 
@@ -30,12 +33,13 @@ jobs:
 
 
   second_job:
-    if: github.ref == 'refs/heads/B' # Only run this job if the branch is 'B' 
     needs: first_job
     runs-on: ubuntu-latest
+    env:
+      SALIDA: ${{ needs.first_job.outputs.salida }} # Use the output variable from the first job
 
     steps:
       - name: Hola mundo
-        run: echo "Hola mundo 2"
+        run: echo "The variable from the first job is ${{ env.SALIDA }}" # Use the output variable from the first job
 
 

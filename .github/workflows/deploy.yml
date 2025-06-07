@@ -12,8 +12,12 @@ jobs:
     steps:
       - name: Working directory
         run: ls -al
+        
       - name: Action
         uses: actions/checkout@v2  # Checkout the repository
+
+      - name: Working directory
+        run: ls -al
 
   second_job:
     if: github.ref == 'refs/heads/B' # Only run this job if the branch is 'B' 

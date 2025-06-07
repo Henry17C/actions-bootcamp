@@ -4,9 +4,9 @@ on:
   push
 
 jobs:
-    fist_jobs:
-        runs-on: ubuntu-latest
-        
-        steps: 
-            - name: Hola nundo
-            run : echo "Hola mundo
+  first_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hola mundo
+        run: echo "Hola mundo"

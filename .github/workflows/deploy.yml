@@ -30,4 +30,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: test-artifact
+        
+      - name: Mostrar el contenido del archivo
+        run: cat test.log
       # This i

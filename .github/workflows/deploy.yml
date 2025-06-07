@@ -4,20 +4,30 @@ on:
   push
 
 jobs:
+
+  # This is my first job
   first_job:
     runs-on: ubuntu-latest
     env:
       NAME: 'value'
 
+    
     steps:
+      # This is the first step
       - name: Working directory
-        run: ls -al
-        
-      - name: Action
-        uses: actions/checkout@v2  # Checkout the repository
+        id: step1
+        run: echo "my_variable=Hola mundo" >> $GITHUB_OUTPUT  # Set an output variable
 
-      - name: Working directory
-        run: ls -al
+      # This is the first step
+      - name: Obtain variable
+        run: echo "The variable is ${{ steps.step1.outputs.my_variable }}" # Use the output variable
+
+      
+
+
+      # This is my second job
+
+
 
   second_job:
     if: github.ref == 'refs/heads/B' # Only run this job if the branch is 'B' 

@@ -10,11 +10,13 @@ jobs:
       NAME: 'value'
 
     steps:
-      - name: Hola mundo
-        run: echo "Hola mundo + $NAME"
+      - name: Working directory
+        run: ls -al
+      - name: Action
+        uses: actions/checkout@v2  # Checkout the repository
 
   second_job:
-    if: github.ref == 'refs/heads/B'
+    if: github.ref == 'refs/heads/B' # Only run this job if the branch is 'B' 
     needs: first_job
     runs-on: ubuntu-latest
 
